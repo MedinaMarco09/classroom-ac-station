@@ -21,7 +21,7 @@ void reconnect()
         clientID+=String(random(0xffff), HEX);
         if (client.connect(clientID.c_str(), mqtt_user, mqtt_password)){
             Serial.println("Conectado");
-            // client.subscribe("fromNodeRED");
+            client.subscribe("estacion");
             // client.subscribe("ledState");
             // client.subscribe("JSONfromNodeRED");
         } else {
@@ -39,21 +39,10 @@ void callback(char *topic, byte *message, unsigned int length){
     // Serial.print(". Message: ");
     String messageTemp;
     for (int i =0; i< length; i++){
-        //Serial.print((char)message[i]);
+        Serial.print((char)message[i]);
         messageTemp += (char)message[i];
     }
-    if(String(topic) == "fromNodeRED"){
-        Serial.println(messageTemp);
-    }
-    else if(String(topic) == "ledState"){
-        Serial.println(messageTemp);
-        if(messageTemp == "ON"){
-            digitalWrite(led, HIGH);
-        } else if(messageTemp == "OFF"){
-            digitalWrite(led, LOW);
-        }
-    }
-    else if(String(topic) == "JSONfromNodeRED"){
+    if(String(topic) == "estacion"){
         // Stream& input;
 
         StaticJsonDocument<128> doc;
@@ -68,10 +57,10 @@ void callback(char *topic, byte *message, unsigned int length){
 
         const char* device = doc["device"]; // "ESP32 is the best MCU"
         int temperature = doc["temperature"]; // 33
-        int humedity = doc["humedity"]; // 90
-        int lux = doc["lux"]; // 643
+        int humidity = doc["humidity"]; // 90
+        // int lux = doc["lux"]; // 800
 
-        String output = String(device) + " "+String(temperature) + "°C "+String(humedity) + "% "+String(lux) + " lux";
+        String output = String(device) + " "+String(temperature) + "°C "+String(humidity) + "% ";
         Serial.println(output);
     }
 
@@ -90,5 +79,6 @@ void connectAP(){
         if(cnt>30){
             ESP.restart();
         }
+        Serial.println(WiFi.localIP());
     }
 }

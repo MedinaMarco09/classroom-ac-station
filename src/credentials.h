@@ -1,2 +1,2 @@
-const char* ssid = "Datalog";
-const char* password = "1234data";
+const char* ssid = "Mega_2.4GM";
+const char* password = "Yacko123_MEGA";
