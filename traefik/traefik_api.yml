@@ -1,0 +1,16 @@
+http:
+  middlewares:
+    simpleAuth:
+      basicAuth:
+        users:
+          - 'admin:$apr1$awkCYjza$0UEuyM.QtxoOxWHh9AVw8/'
+  routers:
+    api:
+      rule: Host(`traefiknodered-itc.duckdns.org`)
+      entryPoints:
+        - websecure
+      middlewares:
+        - simpleAuth
+      service: api@internal
+      tls:
+        certResolver: lets-encrypt

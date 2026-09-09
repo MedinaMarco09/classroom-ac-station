@@ -1,0 +1,10 @@
+.env
+**/*.passwd
+**/acme.json
+**/flows_cred.json
+**/*.backup
+**/mosquitto.db
+**/*.log
+**/node_modules/
+influxdb/data/
+nodered/nodered_data/
