@@ -1,0 +1,14 @@
+/opt/nodered/nodered_data/.config.runtime.json
+/opt/nodered/nodered_data/.config.users.json
+/opt/nodered/nodered_data/flows.json
+/opt/nodered/nodered_data/.config.users.json.backup
+/opt/nodered/nodered_data/.sessions.json
+/opt/nodered/nodered_data/flows_cred.json
+/opt/nodered/nodered_data/.flows_cred.json.backup
+/opt/nodered/nodered_data/.config.runtime.json.backup
+/opt/nodered/nodered_data/package.json
+/opt/nodered/nodered_data/.config.nodes.json.backup
+/opt/nodered/nodered_data/.config.nodes.json
+/opt/nodered/nodered_data/settings.js
+/opt/nodered/nodered_data/.flows.json.backup
+/opt/nodered/nodered_data/package-lock.json

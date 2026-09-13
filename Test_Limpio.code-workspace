@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": "../../C# codes"
+        }
+    ],
+    "settings": {
+        "dotnet.defaultSolution": "ConsoleApp1.sln"
+    }
+}

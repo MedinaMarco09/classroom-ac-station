@@ -1,0 +1,30 @@
+services:
+  node-red:
+    image: nodered/node-red:latest
+    container_name: node-red
+    restart: unless-stopped
+    environment:
+      - TZ=America/Mazatlan
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+      - iotnetwork
+    volumes:
+      - "./nodered_data:/data"
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.node-red.rule=Host(`nodered-ITC.duckdns.org`)"
+      - traefik.http.routers.node-red.entrypoints=websecure
+      - traefik.http.routers.node-red.tls=true
+      - traefik.http.routers.node-red.tls.certresolver=lets-encrypt
+      - traefik.http.services.node-red.loadbalancer.server.port=1880
+
+volumes:
+  nodered-data:
+
+networks:
+  node-red-net:
+  iotnetwork:
+    external: true
+

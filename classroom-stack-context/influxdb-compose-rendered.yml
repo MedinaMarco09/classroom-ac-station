@@ -1,0 +1,44 @@
+name: influxdb
+services:
+  grafana:
+    depends_on:
+      influxdb:
+        condition: service_started
+        required: true
+    image: grafana/grafana:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: grafana
+        target: /var/lib/grafana
+        volume: {}
+  influxdb:
+    image: influxdb:2.8.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8086
+        published: "8086"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: influxDb
+        target: /var/lib/influxdb2
+        volume: {}
+networks:
+  default:
+    name: influxdb_default
+volumes:
+  grafana:
+    name: influxdb_grafana
+  influxDb:
+    name: influxdb_influxDb

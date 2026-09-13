@@ -1,0 +1,7 @@
+NETWORK ID     NAME                   DRIVER    SCOPE
+d8ff8a1b3755   bridge                 bridge    local
+d7793696c8eb   host                   host      local
+d951db4f7c8c   influxdb_default       bridge    local
+e54c7b71630e   iotnetwork             bridge    local
+3ad70750913f   nodered_node-red-net   bridge    local
+6ec81b76010b   none                   null      local
